@@ -24,5 +24,11 @@ export const counterSlice = createSlice({
 // Action creator are generated for each reducer function here, basically sets up dispatch
 export const {increment, decrement, increaseByAmount} = counterSlice.actions
 
+// essentially does this behind the scenes
+// const reducerName = param => dispatch({
+//     type: slice_name/reducer_name,
+//     payload: param
+// })
+
 //not reducers plural, basically final output of createSlice
 export default counterSlice.reducer

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import {increment, decrement, increaseByAmount} from '../redux/counterSlice'
+import { increment, decrement, increaseByAmount } from '../redux/counterSlice'
 import { addUser } from '../redux/usersSlice'
 
 const Counter = () => {
@@ -29,8 +29,12 @@ const Counter = () => {
             age: 30
         })
         )}>Add User</button>
-
+        
+    <h3>Age: total ages</h3> 
+    <button>Add Ages</button>
     </div>
+
+
   )
 }
 

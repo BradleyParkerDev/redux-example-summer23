@@ -17,12 +17,14 @@ export const usersSlice = createSlice({
                 age: 40
             }
         ]
+        //add variable for storing total
     },
     reducers: {
         addUser: (state, action) => {
             console.log(action.payload)
             state.usersArray.push(action.payload)
         }
+        // adding ages (hint method)
     }
 })
 
