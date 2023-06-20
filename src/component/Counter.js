@@ -2,14 +2,18 @@ import React, {useState} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement, increaseByAmount } from '../redux/counterSlice'
-import { addUser } from '../redux/usersSlice'
+import { addUser, totalAgesAcc } from '../redux/usersSlice'
 
 const Counter = () => {
     //  useSelector - selects from the redux store (state)
     // takes in the store and selects any reducer that you specify
     const counterState = useSelector(state => state.counter.value)
-    const users = useSelector( state => state.users.usersArray)
+    //   const users= useSelector( state => state.users)
+    const usersArray = useSelector( state => state.users.usersArray)
+    const usersTotal = useSelector( state => state.users.totalAges)
     const dispatch = useDispatch()
+
+    
 
     const [onChange, setOnChange] = useState(0)
 
@@ -21,7 +25,7 @@ const Counter = () => {
     <br />
     <input type='number' onChange={ e => setOnChange(e.target.value)}/>
     <button onClick={() => dispatch(increaseByAmount(onChange))}>Add {onChange}</button>
-    {users.map( e => <p>{e.name}</p>)}
+    {usersArray.map( e => <p>{e.name}</p>)}
 
     <button onClick={ () => 
         dispatch(addUser({
@@ -29,9 +33,9 @@ const Counter = () => {
             age: 30
         })
         )}>Add User</button>
-        
-    <h3>Age: total ages</h3> 
-    <button>Add Ages</button>
+
+    <h3>Age: {usersTotal}</h3> 
+    <button onClick={() => dispatch(totalAgesAcc())}>Add Ages</button>
     </div>
 
 

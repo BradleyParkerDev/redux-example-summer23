@@ -16,18 +16,20 @@ export const usersSlice = createSlice({
                 name: "Happy",
                 age: 40
             }
-        ]
-        //add variable for storing total
+        ],
+        totalAges: 0
     },
     reducers: {
         addUser: (state, action) => {
             console.log(action.payload)
             state.usersArray.push(action.payload)
+        },
+        totalAgesAcc: (state) => {
+            state.totalAges = state.usersArray.reduce(((accumulator, element) => accumulator + element.age), 0)
         }
-        // adding ages (hint method)
     }
 })
 
-export const {addUser} = usersSlice.actions
+export const {addUser, totalAgesAcc} = usersSlice.actions
 
 export default usersSlice.reducer
